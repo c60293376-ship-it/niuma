@@ -1,0 +1,249 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "FangZhengKaiTi";
+  src: url("./assets/fonts/方正楷体简体.TTF") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "ShuYaSongHeavy";
+  src: url("./assets/fonts/字魂书雅宋-Heavy(商用需授权).ttf") format("truetype");
+  font-display: swap;
+}
+
+@theme {
+  --color-niuma-bg: #FCEAE4;
+  --color-niuma-bgSoft: #F8D8CF;
+  --color-niuma-card: #FFF8F3;
+  --color-niuma-primary: #D95A4E;
+  --color-niuma-primaryDark: #8B3A32;
+  --color-niuma-textMain: #3B2A24;
+  --color-niuma-textSub: #7A6258;
+  --color-niuma-green: #5F7F4F;
+  --color-niuma-danger: #D65A4A;
+  --color-niuma-border: #EAC8BC;
+  --color-niuma-shadow: rgba(120, 72, 60, 0.12);
+
+  --font-sans: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", system-ui, -apple-system, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--color-niuma-bg);
+  color: var(--color-niuma-textMain);
+  min-height: 100dvh;
+}
+
+#root {
+  width: 100%;
+  max-width: 430px;
+  min-height: 100dvh;
+  margin: 0 auto;
+  position: relative;
+  overflow-x: hidden;
+  background: linear-gradient(180deg, var(--color-niuma-bg) 0%, var(--color-niuma-bgSoft) 40%, var(--color-niuma-bg) 100%);
+}
+
+/* 全局文字防溢出 */
+p, span, h1, h2, h3, li {
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+.today-calendar-page {
+  --today-calendar-fallback: #f6ede5;
+  position: relative;
+  overflow: hidden;
+  background-color: var(--today-calendar-fallback);
+}
+
+.today-calendar-page::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 430px;
+  background-image: var(--today-calendar-bg);
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: 100% auto;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.today-calendar-oracle-scene {
+  position: relative;
+  width: calc(100% + 40px);
+  margin: 0 -20px -92px;
+  padding: 12px 20px 104px;
+  overflow: hidden;
+}
+
+.today-calendar-oracle-scene::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--today-calendar-bg);
+  background-repeat: no-repeat;
+  background-position: bottom center;
+  background-size: 100% auto;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.today-calendar-oracle-scene > * {
+  position: relative;
+  z-index: 1;
+}
+
+.today-calendar-page .date-main {
+  font-family: "FangZhengKaiTi", serif;
+  font-weight: 700 !important;
+}
+
+.today-calendar-page .fortune-title {
+  font-family: "ShuYaSongHeavy", "FangZhengKaiTi", serif;
+  font-weight: 900 !important;
+}
+
+.today-calendar-page .section-title {
+  font-family: "FangZhengKaiTi", serif;
+  font-weight: 700 !important;
+}
+
+.today-calendar-page .body-text,
+.today-calendar-page .fortune-desc,
+.today-calendar-page .date-pill,
+.today-calendar-page .fortune-meta,
+.today-calendar-page .item-title,
+.today-calendar-page .item-desc,
+.today-calendar-page .oracle-text,
+.today-calendar-page .today-nav-label,
+.bottom-nav .today-nav-label {
+  font-family: "FangZhengKaiTi", serif;
+}
+
+.today-calendar-page .body-text {
+  font-weight: 400 !important;
+}
+
+.today-calendar-page .date-pill,
+.today-calendar-page .fortune-meta {
+  font-weight: 700 !important;
+}
+
+.today-calendar-page .item-title,
+.today-calendar-page .today-nav-active,
+.bottom-nav .today-nav-active {
+  font-weight: 700 !important;
+}
+
+.today-calendar-page .item-desc,
+.today-calendar-page .fortune-desc,
+.today-calendar-page .oracle-text {
+  font-weight: 500 !important;
+}
+
+.today-calendar-page .oracle-bucket {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  pointer-events: none;
+  user-select: none;
+}
+
+.ask-fortune-page main :where(p, span, button, textarea, h2, h3) {
+  font-family: "FangZhengKaiTi", serif;
+}
+
+.ask-fortune-page main textarea::placeholder {
+  font-family: "FangZhengKaiTi", serif;
+}
+
+.ask-fortune-page .ask-scene-chip,
+.ask-fortune-page .ask-strong {
+  font-weight: 700 !important;
+}
+
+.space-check-page main :where(p, span, button, textarea, h2, h3, label) {
+  font-family: "FangZhengKaiTi", serif;
+}
+
+.space-check-page main textarea::placeholder,
+.space-check-page main input::placeholder {
+  font-family: "FangZhengKaiTi", serif;
+}
+
+.space-check-page .space-strong {
+  font-weight: 700 !important;
+}
+
+.mingbu-page main :where(p, span, button, h2, h3, label) {
+  font-family: "FangZhengKaiTi", serif;
+}
+
+.mingbu-page .mingbu-fate-title {
+  font-family: "ShuYaSongHeavy", "FangZhengKaiTi", serif;
+  font-weight: 700 !important;
+}
+
+.mingbu-page .mingbu-strong {
+  font-weight: 700 !important;
+}
+
+.today-calendar-page .fortune-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.today-calendar-page .fortune-card-copy {
+  position: relative;
+  z-index: 2;
+}
+
+.today-calendar-page .fortune-cow-slot {
+  position: absolute;
+  right: -8px;
+  bottom: -10px;
+  width: 53%;
+  z-index: 1;
+  pointer-events: none;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  overflow: hidden;
+}
+
+.today-calendar-page .fortune-cow {
+  display: block;
+  width: 100%;
+  max-width: 228px;
+  min-width: 164px;
+  height: auto;
+  object-fit: contain;
+  transform: translateX(2px);
+  clip-path: inset(0 0 4px 0);
+  pointer-events: none;
+  user-select: none;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
